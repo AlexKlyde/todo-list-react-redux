@@ -1,6 +1,6 @@
-You can see the project here
-# [Todo List Project]()
-## Getting Started with Calendar Project
+<!-- You can see the project here -->
+<!-- # [Todo-List Project]() -->
+## Getting Started with Todo-List Project
 In the project directory, you can run:
 ### `npm start`
 Runs the app in the development mode.\
