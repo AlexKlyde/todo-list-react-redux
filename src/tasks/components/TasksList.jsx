@@ -1,30 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import Task from './Task';
+import { sortedTasksListSelector } from '../tasks.selectors';
 
-const TasksList = ({ tasks, handleTaskStatusChange, handleTaskDelete }) => {
+const TasksList = () => {
+  const tasks = useSelector(state => sortedTasksListSelector(state));
+
   return (
     <ul className="list">
       {tasks.map(task => (
         <Task
           key={task.id}
           {...task}
-          onChange={handleTaskStatusChange}
-          onDelete={handleTaskDelete}
         />
       ))}
     </ul>
   );
-};
-
-TasksList.propTypes = {
-  tasks: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string,
-      done: PropTypes.bool,
-      id: PropTypes.string,
-    }),
-  ).isRequired,
 };
 
 export default TasksList;

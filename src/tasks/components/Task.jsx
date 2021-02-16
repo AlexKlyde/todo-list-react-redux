@@ -1,28 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
-const Task = ({ id, done, text, onChange, onDelete }) => {
+import { updateTask, deleteTask } from '../tasks.actions';
+
+const Task = ({ id, done, text}) => {
+  const dispatch = useDispatch();
+
   return (
     <li className={classNames('list-item', { 'list-item_done': done })}>
       <input
         className="list-item__checkbox"
         type="checkbox"
         defaultChecked={done}
-        onChange={() => onChange(id)}
+        onChange={() => dispatch(updateTask(id))}
       />
       <span className="list-item__text">{text}</span>
-      <button className="list-item__delete-btn" onClick={() => onDelete(id)} />
+      <button className="list-item__delete-btn" onClick={() => dispatch(deleteTask(id))} />
     </li>
   );
-};
-
-Task.propTypes = {
-  id: PropTypes.string.isRequired,
-  text: PropTypes.string,
-  done: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
 };
 
 export default Task;

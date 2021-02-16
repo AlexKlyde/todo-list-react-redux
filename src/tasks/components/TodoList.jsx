@@ -1,59 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import TasksList from './TasksList';
 import CreateTaskInput from './CreateTaskInput';
-import * as tasksActions from '../tasks.actions';
-import { sortedTasksListSelector } from '../tasks.selectors';
+import { getTaskList } from '../tasks.actions';
 
-class TodoList extends Component {
-  componentDidMount() {
-    this.props.getTaskList();
-  } 
+const TodoList = () => {
+  const dispatch = useDispatch();
 
-  render() {
-    return (
-      <>
-        <h1 className="title">Todo List</h1>
-        <main className="todo-list">
-          <CreateTaskInput onCreate={this.props.createTask} />
-          <TasksList
-            tasks={this.props.tasks}
-            handleTaskStatusChange={this.props.updateTask}
-            handleTaskDelete={this.props.deleteTask}
-          />
-        </main>
-      </>
-    );
-  }
-}
+  useEffect(() => {
+    dispatch(getTaskList());
+  }, []);
 
-TodoList.propTypes = {
-  getTaskList: PropTypes.func.isRequired,
-  updateTask: PropTypes.func.isRequired,
-  deleteTask: PropTypes.func.isRequired,
-  createTask: PropTypes.func.isRequired,
-  tasks: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string,
-      done: PropTypes.bool,
-      id: PropTypes.string,
-    }),
-  ).isRequired,
+  return (
+    <>
+      <h1 className="title">Todo List</h1>
+      <main className="todo-list">
+        <CreateTaskInput />
+        <TasksList />
+      </main>
+    </>
+  );
 };
 
-const mapDispatch = {
-  getTaskList: tasksActions.getTaskList,
-  updateTask: tasksActions.updateTask,
-  deleteTask: tasksActions.deleteTask,
-  createTask: tasksActions.createTask,
-};
-
-const mapState = state => {
-  return {
-    tasks: sortedTasksListSelector(state),
-  };
-};
-
-export default connect(mapState, mapDispatch)(TodoList);
+export default TodoList;
