@@ -1,7 +1,8 @@
-<!-- You can see the project here -->
-<!-- # [Todo-List Project]() -->
+You can see the project here
+# [Todo-List Project](https://jolly-payne-0d9358.netlify.app/)
 ## Getting Started with Todo-List Project
 In the project directory, you can run:
+### `npm i`
 ### `npm start`
 Runs the app in the development mode.\
 The page will reload if you make edits.\
