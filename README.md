@@ -11,9 +11,9 @@ Builds the app for production to the `build` folder.\
 
 The tech stack is:
 * JS + ES6
-* React
-* Redux
+* React(Hooks)
+* Redux(thunk)
 * Webpack
 
-### Author: [Aleksei Kalaida](https://alekseikalaidacv.netlify.app/)
+### Author: [Aleksei Kalaida](https://www.linkedin.com/in/aleksei-kalaida-28444092/)
 
