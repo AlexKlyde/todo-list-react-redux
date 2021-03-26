@@ -1,20 +1,8 @@
 import { TASKS_LIST_RECEIVED } from './tasks.actions';
-// import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   tasksList: [],
 };
-
-/* const tasksReducer = createSlice({
-  name: 'tasks',
-  initialState,
-  reducers: {
-    tasksListRecieved(state, action) {
-      const tasksList = action.payload
-      state.tasksList = tasksList
-    }
-  },
-}); */
 
 const tasksReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -28,7 +16,4 @@ const tasksReducer = (state = initialState, action) => {
   }
 };
 
-/* export const { tasksListRecieved } = tasksReducer.actions;
-
-export default tasksReducer.reducer; */
 export default tasksReducer;
